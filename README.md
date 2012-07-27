@@ -9,7 +9,7 @@ This component is part of the most popular social network in China, DouDouYou兜
 1. import XYAlertViewHeader.h in your prefix file.
 2. invoke XYShowAlert(@"Hello!") anywhere in your code to popup the alert view.
 
-## More
+## Cases
 - complete way to create a customized alert view with block.
 
 <img src="http://media3.doudouy.com/users/251/userPhoto/origin/1343356324907.jpg"/>
@@ -54,6 +54,8 @@ XYShowAlert(@"Hello! This is the first alertView");
 XYShowAlert(@"I'm second one.");
 XYShowAlert(@"I'm the last one");
 ```
+## Other open source
+iOS emoji keyboard view <a href="https://github.com/fly2wind/TSEmojiView">TSEmojiView</a>.
 
 ## Contrat me
 
