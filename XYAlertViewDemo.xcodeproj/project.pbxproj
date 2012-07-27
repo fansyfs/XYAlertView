@@ -1,0 +1,349 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7E014FD515BFA84500C6896B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E014FD415BFA84500C6896B /* UIKit.framework */; };
+		7E014FD715BFA84500C6896B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E014FD615BFA84500C6896B /* Foundation.framework */; };
+		7E014FD915BFA84500C6896B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E014FD815BFA84500C6896B /* CoreGraphics.framework */; };
+		7E014FDF15BFA84600C6896B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E014FDD15BFA84600C6896B /* InfoPlist.strings */; };
+		7E014FE115BFA84600C6896B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E014FE015BFA84600C6896B /* main.m */; };
+		7E014FE515BFA84600C6896B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E014FE415BFA84600C6896B /* AppDelegate.m */; };
+		7E014FE815BFA84600C6896B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E014FE715BFA84600C6896B /* ViewController.m */; };
+		7E014FEB15BFA84600C6896B /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E014FE915BFA84600C6896B /* ViewController.xib */; };
+		7E014FF415BFA96F00C6896B /* XYAlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E014FF315BFA96F00C6896B /* XYAlertViewManager.m */; };
+		7E014FF715BFC03500C6896B /* XYAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E014FF615BFC03500C6896B /* XYAlertView.m */; };
+		7E014FFA15BFF4F100C6896B /* XYLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E014FF915BFF4F100C6896B /* XYLoadingView.m */; };
+		7E33B36D15C0F70E007D2E1A /* alertView_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E33B36715C0F70E007D2E1A /* alertView_bg@2x.png */; };
+		7E33B36E15C0F70E007D2E1A /* alertView_button_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E33B36815C0F70E007D2E1A /* alertView_button_gray@2x.png */; };
+		7E33B36F15C0F70E007D2E1A /* alertView_button_gray_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E33B36915C0F70E007D2E1A /* alertView_button_gray_pressed@2x.png */; };
+		7E33B37015C0F70E007D2E1A /* alertView_button_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E33B36A15C0F70E007D2E1A /* alertView_button_green@2x.png */; };
+		7E33B37115C0F70E007D2E1A /* alertView_button_green_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E33B36B15C0F70E007D2E1A /* alertView_button_green_pressed@2x.png */; };
+		7E33B37215C0F70E007D2E1A /* alertView_loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E33B36C15C0F70E007D2E1A /* alertView_loading@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7E014FD015BFA84500C6896B /* XYAlertViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XYAlertViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E014FD415BFA84500C6896B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7E014FD615BFA84500C6896B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7E014FD815BFA84500C6896B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7E014FDC15BFA84600C6896B /* XYAlertViewDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XYAlertViewDemo-Info.plist"; sourceTree = "<group>"; };
+		7E014FDE15BFA84600C6896B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7E014FE015BFA84600C6896B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7E014FE215BFA84600C6896B /* XYAlertViewDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XYAlertViewDemo-Prefix.pch"; sourceTree = "<group>"; };
+		7E014FE315BFA84600C6896B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7E014FE415BFA84600C6896B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7E014FE615BFA84600C6896B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7E014FE715BFA84600C6896B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7E014FEA15BFA84600C6896B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		7E014FF215BFA96F00C6896B /* XYAlertViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAlertViewManager.h; sourceTree = "<group>"; };
+		7E014FF315BFA96F00C6896B /* XYAlertViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAlertViewManager.m; sourceTree = "<group>"; };
+		7E014FF515BFC03500C6896B /* XYAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAlertView.h; sourceTree = "<group>"; };
+		7E014FF615BFC03500C6896B /* XYAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAlertView.m; sourceTree = "<group>"; };
+		7E014FF815BFF4F100C6896B /* XYLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYLoadingView.h; sourceTree = "<group>"; };
+		7E014FF915BFF4F100C6896B /* XYLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYLoadingView.m; sourceTree = "<group>"; };
+		7E33B36715C0F70E007D2E1A /* alertView_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alertView_bg@2x.png"; sourceTree = "<group>"; };
+		7E33B36815C0F70E007D2E1A /* alertView_button_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alertView_button_gray@2x.png"; sourceTree = "<group>"; };
+		7E33B36915C0F70E007D2E1A /* alertView_button_gray_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alertView_button_gray_pressed@2x.png"; sourceTree = "<group>"; };
+		7E33B36A15C0F70E007D2E1A /* alertView_button_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alertView_button_green@2x.png"; sourceTree = "<group>"; };
+		7E33B36B15C0F70E007D2E1A /* alertView_button_green_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alertView_button_green_pressed@2x.png"; sourceTree = "<group>"; };
+		7E33B36C15C0F70E007D2E1A /* alertView_loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alertView_loading@2x.png"; sourceTree = "<group>"; };
+		7ED6913D15C2293000162830 /* XYAlertViewHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYAlertViewHeader.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7E014FCD15BFA84500C6896B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E014FD515BFA84500C6896B /* UIKit.framework in Frameworks */,
+				7E014FD715BFA84500C6896B /* Foundation.framework in Frameworks */,
+				7E014FD915BFA84500C6896B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7E014FC515BFA84500C6896B = {
+			isa = PBXGroup;
+			children = (
+				7E014FDA15BFA84500C6896B /* XYAlertViewDemo */,
+				7E014FF115BFA96F00C6896B /* XYAlertView */,
+				7E014FD315BFA84500C6896B /* Frameworks */,
+				7E014FD115BFA84500C6896B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7E014FD115BFA84500C6896B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7E014FD015BFA84500C6896B /* XYAlertViewDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7E014FD315BFA84500C6896B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E014FD415BFA84500C6896B /* UIKit.framework */,
+				7E014FD615BFA84500C6896B /* Foundation.framework */,
+				7E014FD815BFA84500C6896B /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7E014FDA15BFA84500C6896B /* XYAlertViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				7E014FE315BFA84600C6896B /* AppDelegate.h */,
+				7E014FE415BFA84600C6896B /* AppDelegate.m */,
+				7E014FE615BFA84600C6896B /* ViewController.h */,
+				7E014FE715BFA84600C6896B /* ViewController.m */,
+				7E014FE915BFA84600C6896B /* ViewController.xib */,
+				7E014FDB15BFA84600C6896B /* Supporting Files */,
+			);
+			path = XYAlertViewDemo;
+			sourceTree = "<group>";
+		};
+		7E014FDB15BFA84600C6896B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7E014FDC15BFA84600C6896B /* XYAlertViewDemo-Info.plist */,
+				7E014FDD15BFA84600C6896B /* InfoPlist.strings */,
+				7E014FE015BFA84600C6896B /* main.m */,
+				7E014FE215BFA84600C6896B /* XYAlertViewDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7E014FF115BFA96F00C6896B /* XYAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				7ED6913D15C2293000162830 /* XYAlertViewHeader.h */,
+				7E014FF215BFA96F00C6896B /* XYAlertViewManager.h */,
+				7E014FF315BFA96F00C6896B /* XYAlertViewManager.m */,
+				7E014FF515BFC03500C6896B /* XYAlertView.h */,
+				7E014FF615BFC03500C6896B /* XYAlertView.m */,
+				7E014FF815BFF4F100C6896B /* XYLoadingView.h */,
+				7E014FF915BFF4F100C6896B /* XYLoadingView.m */,
+				7E33B36615C0F70E007D2E1A /* images */,
+			);
+			path = XYAlertView;
+			sourceTree = "<group>";
+		};
+		7E33B36615C0F70E007D2E1A /* images */ = {
+			isa = PBXGroup;
+			children = (
+				7E33B36715C0F70E007D2E1A /* alertView_bg@2x.png */,
+				7E33B36815C0F70E007D2E1A /* alertView_button_gray@2x.png */,
+				7E33B36915C0F70E007D2E1A /* alertView_button_gray_pressed@2x.png */,
+				7E33B36A15C0F70E007D2E1A /* alertView_button_green@2x.png */,
+				7E33B36B15C0F70E007D2E1A /* alertView_button_green_pressed@2x.png */,
+				7E33B36C15C0F70E007D2E1A /* alertView_loading@2x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7E014FCF15BFA84500C6896B /* XYAlertViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E014FEE15BFA84600C6896B /* Build configuration list for PBXNativeTarget "XYAlertViewDemo" */;
+			buildPhases = (
+				7E014FCC15BFA84500C6896B /* Sources */,
+				7E014FCD15BFA84500C6896B /* Frameworks */,
+				7E014FCE15BFA84500C6896B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XYAlertViewDemo;
+			productName = XYAlertViewDemo;
+			productReference = 7E014FD015BFA84500C6896B /* XYAlertViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7E014FC715BFA84500C6896B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = Telenavsoftware;
+			};
+			buildConfigurationList = 7E014FCA15BFA84500C6896B /* Build configuration list for PBXProject "XYAlertViewDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7E014FC515BFA84500C6896B;
+			productRefGroup = 7E014FD115BFA84500C6896B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7E014FCF15BFA84500C6896B /* XYAlertViewDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7E014FCE15BFA84500C6896B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E014FDF15BFA84600C6896B /* InfoPlist.strings in Resources */,
+				7E014FEB15BFA84600C6896B /* ViewController.xib in Resources */,
+				7E33B36D15C0F70E007D2E1A /* alertView_bg@2x.png in Resources */,
+				7E33B36E15C0F70E007D2E1A /* alertView_button_gray@2x.png in Resources */,
+				7E33B36F15C0F70E007D2E1A /* alertView_button_gray_pressed@2x.png in Resources */,
+				7E33B37015C0F70E007D2E1A /* alertView_button_green@2x.png in Resources */,
+				7E33B37115C0F70E007D2E1A /* alertView_button_green_pressed@2x.png in Resources */,
+				7E33B37215C0F70E007D2E1A /* alertView_loading@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7E014FCC15BFA84500C6896B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E014FE115BFA84600C6896B /* main.m in Sources */,
+				7E014FE515BFA84600C6896B /* AppDelegate.m in Sources */,
+				7E014FE815BFA84600C6896B /* ViewController.m in Sources */,
+				7E014FF415BFA96F00C6896B /* XYAlertViewManager.m in Sources */,
+				7E014FF715BFC03500C6896B /* XYAlertView.m in Sources */,
+				7E014FFA15BFF4F100C6896B /* XYLoadingView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7E014FDD15BFA84600C6896B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E014FDE15BFA84600C6896B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7E014FE915BFA84600C6896B /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E014FEA15BFA84600C6896B /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7E014FEC15BFA84600C6896B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7E014FED15BFA84600C6896B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7E014FEF15BFA84600C6896B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XYAlertViewDemo/XYAlertViewDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../XYAlertView/**";
+				INFOPLIST_FILE = "XYAlertViewDemo/XYAlertViewDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7E014FF015BFA84600C6896B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XYAlertViewDemo/XYAlertViewDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../XYAlertView/**";
+				INFOPLIST_FILE = "XYAlertViewDemo/XYAlertViewDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7E014FCA15BFA84500C6896B /* Build configuration list for PBXProject "XYAlertViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E014FEC15BFA84600C6896B /* Debug */,
+				7E014FED15BFA84600C6896B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7E014FEE15BFA84600C6896B /* Build configuration list for PBXNativeTarget "XYAlertViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E014FEF15BFA84600C6896B /* Debug */,
+				7E014FF015BFA84600C6896B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7E014FC715BFA84500C6896B /* Project object */;
+}
