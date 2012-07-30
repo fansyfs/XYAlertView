@@ -10,7 +10,7 @@ This component is part of the most popular social network in China, DouDouYou兜
 2. invoke XYShowAlert(@"Hello!") anywhere in your code to popup the alert view.
 
 ## Cases
-- complete way to create a customized alert view with block.
+- completely way to create a customized alert view with block.
 
 <img src="http://media3.doudouy.com/users/251/userPhoto/origin/1343356324907.jpg"/>
 
@@ -38,6 +38,9 @@ XYAlertView *alertView = [XYAlertView alertViewWithTitle:@"Hello!"
 // create a loading view
 XYLoadingView *loadingView = [XYLoadingView loadingViewWithMessage:@"Loading will complete in 5 seconds..."];
 
+// different way to create a loading view
+// XYLoadingView *loadingView = XYShowLoading(@"Loading will complete in 5 seconds...");
+
 // display
 [loadingView show];
 
@@ -52,12 +55,12 @@ XYLoadingView *loadingView = [XYLoadingView loadingViewWithMessage:@"Loading wil
 ```ObjectiveC
 XYShowAlert(@"Hello! This is the first alertView");
 XYShowAlert(@"I'm second one.");
-XYShowAlert(@"I'm the last one");
+XYShowAlert(@"This's the simply way to show an alert!");
 ```
 ## Other open source
 iOS emoji keyboard view <a href="https://github.com/fly2wind/TSEmojiView">TSEmojiView</a>.
 
-## Contrat me
+## Contact me
 
 - email: fansyfs@gmail.com
 - msn: fansy_fs@hotmail.com
