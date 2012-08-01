@@ -51,6 +51,11 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
     {
         _alertViewQueue = [[NSMutableArray alloc] init];
         _isDismissing = NO;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didChangeOrientation:)
+                                                     name:UIApplicationDidChangeStatusBarOrientationNotification
+                                                   object:nil];
     }
     
     return self;
@@ -58,8 +63,25 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
 
 -(void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     [_alertViewQueue removeAllObjects];
     [_loadingTimer invalidate];
+}
+
+#pragma mark - UIApplicationDidChangeStatusBarOrientationNotification
+
+-(void)didChangeOrientation:(NSNotification*)notification
+{
+//    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    if(_alertViewQueue.count > 0)
+    {
+        CGRect screenBounds = XYScreenBounds();
+        _blackBG.frame = CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.height);
+        _alertView.center = CGPointMake(screenBounds.size.width / 2, screenBounds.size.height / 2);
+        _loadingLabel.frame = CGRectMake(0, _alertView.frame.origin.y + _alertView.frame.size.height + 10, screenBounds.size.width, 30);
+    }
 }
 
 #pragma mark - private
@@ -88,6 +110,8 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
         _blackBG.userInteractionEnabled = YES;
     }
     
+    _blackBG.frame = CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.height);
+    
     _alertView = nil;
     _alertView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"alertView_loading.png"]];
     _alertView.center = CGPointMake(screenBounds.size.width / 2, screenBounds.size.height / 2);
@@ -112,6 +136,8 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
         _blackBG.alpha = 0.5f;
         _blackBG.userInteractionEnabled = YES;
     }
+    
+    _blackBG.frame = CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.height);
 
     _alertView = nil;
     _alertView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"alertView_bg.png"] stretchableImageWithLeftCapWidth:34 topCapHeight:44]];
@@ -209,19 +235,20 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
     if([entity isKindOfClass:[XYAlertView class]])
     {
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    //    if(!keyWindow)
+        if(!keyWindow)
         {
             NSArray *windows = [UIApplication sharedApplication].windows;
             if(windows.count > 0) keyWindow = [windows lastObject];
-    //            keyWindow = [windows objectAtIndex:0];
+            keyWindow = [windows objectAtIndex:0];
         }
+        UIView *containerView = [[keyWindow subviews] objectAtIndex:0];
         
         _blackBG.alpha = 0.0f;
         CGRect frame = _alertView.frame;
         frame.origin.y = -AlertViewHeight;
         _alertView.frame = frame;
-        [keyWindow addSubview:_blackBG];
-        [keyWindow addSubview:_alertView];
+        [containerView addSubview:_blackBG];
+        [containerView addSubview:_alertView];
         
         [UIView animateWithDuration:0.2f animations:^{
             _blackBG.alpha = 0.5f;
@@ -266,12 +293,13 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
     if([entity isKindOfClass:[XYLoadingView class]])
     {
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    //    if(!keyWindow)
+        if(!keyWindow)
         {
             NSArray *windows = [UIApplication sharedApplication].windows;
             if(windows.count > 0) keyWindow = [windows lastObject];
-    //            keyWindow = [windows objectAtIndex:0];
+            keyWindow = [windows objectAtIndex:0];
         }
+        UIView *containerView = [[keyWindow subviews] objectAtIndex:0];
         
         _blackBG.alpha = 0.0f;
         CGRect frame = _alertView.frame;
@@ -280,9 +308,9 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
         frame = _loadingLabel.frame;
         frame.origin.y = XYScreenBounds().size.height;
         _loadingLabel.frame = frame;
-        [keyWindow addSubview:_blackBG];
-        [keyWindow addSubview:_alertView];
-        [keyWindow addSubview:_loadingLabel];
+        [containerView addSubview:_blackBG];
+        [containerView addSubview:_alertView];
+        [containerView addSubview:_loadingLabel];
         
         _loadingTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateLoadingAnimation) userInfo:nil repeats:YES];
         
