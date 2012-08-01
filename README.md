@@ -35,14 +35,12 @@ XYAlertView *alertView = [XYAlertView alertViewWithTitle:@"Hello!"
 <img src="http://media3.doudouy.com/users/251/userPhoto/origin/1343356312864.jpg"/>
 
 ```ObjectiveC
-// create a loading view
+// create a loading view and show up
 XYLoadingView *loadingView = [XYLoadingView loadingViewWithMessage:@"Loading will complete in 5 seconds..."];
-
-// different way to create a loading view
-// XYLoadingView *loadingView = XYShowLoading(@"Loading will complete in 5 seconds...");
-
-// display
 [loadingView show];
+
+// different way to show a loading view
+// XYLoadingView *loadingView = XYShowLoading(@"Loading will complete in 5 seconds...");
 
 // dismiss loading view with popup message after 5 seconds
 [loadingView performSelector:@selector(dismissWithMessage:) withObject:@"The message comes out once loading view gone." afterDelay:5];
