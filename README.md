@@ -55,6 +55,19 @@ XYShowAlert(@"Hello! This is the first alertView");
 XYShowAlert(@"I'm second one.");
 XYShowAlert(@"This's the simply way to show an alert!");
 ```
+
+- the text input in popup alert view
+
+```ObjectiveC
+XYInputView *inputView = [XYInputView inputViewWithPlaceholder:@"Please input something here..."
+                                                       initialText:nil buttons:[NSArray arrayWithObjects:@"Cancel", @"Done", nil]
+                                                      afterDismiss:^(int buttonIndex, NSString *text) {
+                                                          if(buttonIndex == 1)
+                                                              NSLog(@"text: %@", text);
+                                                      }];
+[inputView show];
+```
+
 ## Other open source
 iOS emoji keyboard view <a href="https://github.com/fly2wind/TSEmojiView">TSEmojiView</a>.
 
