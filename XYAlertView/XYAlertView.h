@@ -10,13 +10,6 @@
 
 typedef void (^XYAlertViewBlock)(int buttonIndex);
 
-typedef enum
-{
-    XYButtonStyleGray = 1,
-    XYButtonStyleGreen = 2,
-    XYButtonStyleDefault = XYButtonStyleGreen,
-} XYButtonStyle;
-
 @interface XYAlertView : NSObject
 
 @property (copy, nonatomic) NSString *title;

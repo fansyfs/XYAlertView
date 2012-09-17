@@ -8,12 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum
+{
+    XYButtonStyleGray = 1,
+    XYButtonStyleGreen = 2,
+    XYButtonStyleDefault = XYButtonStyleGreen,
+} XYButtonStyle;
+
 CGRect XYScreenBounds();
 
 @class XYAlertView;
 @class XYLoadingView;
+@class XYInputView;
+@class GCPlaceholderTextView;
 
-@interface XYAlertViewManager : NSObject
+@interface XYAlertViewManager : NSObject <UITextViewDelegate>
 {
     NSMutableArray *_alertViewQueue;
     id _currentAlertView;
@@ -21,6 +30,7 @@ CGRect XYScreenBounds();
     UIImageView *_alertView;
     UIView *_blackBG;
     UILabel *_loadingLabel;
+    GCPlaceholderTextView *_textView;
 
     NSTimer *_loadingTimer;
     

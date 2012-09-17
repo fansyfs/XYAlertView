@@ -44,6 +44,18 @@
     [loadingView performSelector:@selector(dismiss) withObject:nil afterDelay:5];
 }
 
+-(IBAction)inputView:(id)sender
+{
+    XYInputView *inputView = [XYInputView inputViewWithPlaceholder:@"Please input something here..."
+                                                       initialText:nil buttons:[NSArray arrayWithObjects:@"Cancel", @"Done", nil]
+                                                      afterDismiss:^(int buttonIndex, NSString *text) {
+                                                          if(buttonIndex == 1)
+                                                              NSLog(@"text: %@", text);
+                                                      }];
+    [inputView setButtonStyle:XYButtonStyleGreen atIndex:1];
+    [inputView show];
+}
+
 -(IBAction)singleAlertView:(id)sender
 {
     // create an alertView

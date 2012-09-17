@@ -12,6 +12,7 @@
 
 -(IBAction)easywayAlertView:(id)sender;
 -(IBAction)easywayLoadingView:(id)sender;
+-(IBAction)inputView:(id)sender;
 -(IBAction)singleAlertView:(id)sender;
 -(IBAction)singleLoadingView:(id)sender;
 -(IBAction)threeAlertView:(id)sender;

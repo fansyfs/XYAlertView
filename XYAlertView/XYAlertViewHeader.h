@@ -10,6 +10,7 @@
 
 #import "XYAlertView.h"
 #import "XYLoadingView.h"
+#import "XYInputView.h"
 #import "XYAlertViewManager.h"
 
 #define XYShowAlert(_MSG_) [[XYAlertViewManager sharedAlertViewManager] showAlertView:_MSG_]

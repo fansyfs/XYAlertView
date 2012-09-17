@@ -9,6 +9,8 @@
 #import "XYAlertViewManager.h"
 #import "XYLoadingView.h"
 #import "XYAlertView.h"
+#import "XYInputView.h"
+#import "GCPlaceholderTextView.h"
 
 #define AlertViewWidth 280.0f
 #define AlertViewHeight 175.0f
@@ -55,6 +57,16 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(didChangeOrientation:)
                                                      name:UIApplicationDidChangeStatusBarOrientationNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillShow:)
+                                                     name:UIKeyboardWillShowNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillHide:)
+                                                     name:UIKeyboardWillHideNotification
                                                    object:nil];
     }
     
@@ -191,6 +203,64 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
     }
 }
 
+-(void)prepareInputToDisplay:(XYInputView*)entity
+{
+    CGRect screenBounds = XYScreenBounds();
+    if(!_blackBG)
+    {
+        _blackBG = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.height)];
+        _blackBG.backgroundColor = [UIColor blackColor];
+        _blackBG.opaque = YES;
+        _blackBG.alpha = 0.5f;
+        _blackBG.userInteractionEnabled = YES;
+    }
+    
+    _blackBG.frame = CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.height);
+    
+    _alertView = nil;
+    _alertView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"alertView_bg.png"] stretchableImageWithLeftCapWidth:34 topCapHeight:44]];
+    _alertView.userInteractionEnabled = YES;
+    _alertView.frame = CGRectMake(0, 0, AlertViewWidth, AlertViewHeight);
+    _alertView.center = CGPointMake(screenBounds.size.width / 2, screenBounds.size.height / 2);
+
+    _textView = [[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(20, 15, 240, 75)];
+    _textView.backgroundColor = [UIColor whiteColor];
+    _textView.returnKeyType = UIReturnKeyDone;
+    _textView.delegate = self;
+    _textView.placeholder = entity.placeholder;
+    _textView.font = [UIFont systemFontOfSize:14];
+    _textView.text = entity.initialText;
+
+    [_alertView addSubview:_textView];
+    
+    float buttonWidth = (AlertViewWidth - 100.0f) / entity.buttons.count;
+    float buttonPadding = 100.0f / (entity.buttons.count - 1 + 2 * 2);
+    
+    for(int i = 0; i < entity.buttons.count; i++)
+    {
+        NSString *buttonTitle = [entity.buttons objectAtIndex:i];
+        XYButtonStyle style = [[entity.buttonsStyle objectAtIndex:i] intValue];
+        
+        UIButton *_button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_button setTitle:buttonTitle forState:UIControlStateNormal];
+        _button.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        _button.titleLabel.shadowOffset = CGSizeMake(1, 1);
+        [_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_button setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_button setBackgroundImage:[self buttonImageByStyle:style state:UIControlStateNormal]
+                           forState:UIControlStateNormal];
+        [_button setBackgroundImage:[self buttonImageByStyle:style state:UIControlStateHighlighted]
+                           forState:UIControlStateHighlighted];
+        
+        _button.frame = CGRectMake(buttonPadding * 2 + buttonWidth * i + buttonPadding * i, 107,
+                                   buttonWidth, 44);
+        _button.tag = i;
+        
+        [_button addTarget:self action:@selector(onButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [_alertView addSubview:_button];
+    }
+}
+
 -(void)updateLoadingAnimation
 {
     CGAffineTransform transform = _alertView.transform;
@@ -219,6 +289,11 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
         {
             [self prepareLoadingToDisplay:entity];
             [self showLoadingViewWithAnimation:entity];
+        }
+        else if([entity isKindOfClass:[XYInputView class]])
+        {
+            [self prepareInputToDisplay:entity];
+            [self showInputViewWithAnimation:entity];
         }
     }
 }
@@ -358,6 +433,130 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
     }
 }
 
+-(void)showInputViewWithAnimation:(id)entity
+{
+    if([entity isKindOfClass:[XYInputView class]])
+    {
+        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+        if(!keyWindow)
+        {
+            NSArray *windows = [UIApplication sharedApplication].windows;
+            if(windows.count > 0) keyWindow = [windows lastObject];
+            keyWindow = [windows objectAtIndex:0];
+        }
+        UIView *containerView = [[keyWindow subviews] objectAtIndex:0];
+        
+        _blackBG.alpha = 0.0f;
+        CGRect frame = _alertView.frame;
+        frame.origin.y = -AlertViewHeight;
+        _alertView.frame = frame;
+        [containerView addSubview:_blackBG];
+        [containerView addSubview:_alertView];
+        
+        [UIView animateWithDuration:0.2f animations:^{
+            _blackBG.alpha = 0.5f;
+            _alertView.center = CGPointMake(XYScreenBounds().size.width / 2, XYScreenBounds().size.height / 2);
+        }
+                         completion:^(BOOL finished) {
+                             
+                         }];
+    }
+}
+
+-(void)dismissInputViewWithAnimation:(id)entity button:(int)buttonIndex
+{
+    if([entity isKindOfClass:[XYInputView class]])
+    {
+        [UIView animateWithDuration:0.2f
+                         animations:
+         ^{
+             _blackBG.alpha = 0.0f;
+             CGRect frame = _alertView.frame;
+             frame.origin.y = -AlertViewHeight;
+             _alertView.frame = frame;
+         }
+                         completion:^(BOOL finished)
+         {
+             [_alertView removeFromSuperview];
+             [_blackBG removeFromSuperview];
+             
+             [_alertViewQueue removeLastObject];
+             _isDismissing = NO;
+             
+             if(((XYInputView*)entity).blockAfterDismiss)
+                 ((XYInputView*)entity).blockAfterDismiss(buttonIndex, _textView.text);
+             
+             [self checkoutInStackAlertView];
+         }];
+    }
+}
+
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range
+ replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"])
+    {
+        id entity = [_alertViewQueue lastObject];
+        if(entity && [entity isKindOfClass:[XYInputView class]])
+        {
+            _isDismissing = YES;
+            [self dismissInputViewWithAnimation:entity button:1];
+            
+            return NO;
+        }
+        else
+        {
+            return YES;
+        }
+    }
+    else
+    {
+        return YES;
+    }
+}
+
+#pragma mark - keyboard
+
+-(void)changeLayoutByKeyboardTop:(CGFloat)keyboardTop andAnimationDuration:(double)animationDuration
+{
+    if(_isDismissing)
+        return;
+
+    [UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:animationDuration];
+	
+    if(_alertViewQueue.count > 0)
+    {
+        CGRect screenBounds = XYScreenBounds();
+        _blackBG.frame = CGRectMake(0, 0, screenBounds.size.width, screenBounds.size.height);
+        _alertView.center = CGPointMake(screenBounds.size.width / 2, keyboardTop / 2);
+        _loadingLabel.frame = CGRectMake(0, _alertView.frame.origin.y + _alertView.frame.size.height + 10, screenBounds.size.width, 30);
+    }
+    
+	[UIView commitAnimations];
+}
+
+-(void)keyboardWillShow:(NSNotification *)notification
+{
+    CGRect endRect = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+
+	double animationDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    if(animationDuration == 0) animationDuration = 0.25;
+	
+	[self changeLayoutByKeyboardTop:endRect.origin.y andAnimationDuration:animationDuration];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    CGRect endRect = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+
+	double animationDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    if(animationDuration == 0) animationDuration = 0.25;
+	
+	[self changeLayoutByKeyboardTop:endRect.origin.y andAnimationDuration:animationDuration];
+}
+
 #pragma mark - public
 
 -(XYAlertView*)showAlertView:(NSString*)message
@@ -381,7 +580,9 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
 
 -(void)show:(id)entity
 {
-    if([entity isKindOfClass:[XYAlertView class]] || [entity isKindOfClass:[XYLoadingView class]])
+    if([entity isKindOfClass:[XYAlertView class]] ||
+       [entity isKindOfClass:[XYLoadingView class]] ||
+       [entity isKindOfClass:[XYInputView class]])
     {
         if(_isDismissing == YES && _alertViewQueue.count > 0)
         {
@@ -407,6 +608,11 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
                 [self prepareLoadingToDisplay:entity];
                 [self showLoadingViewWithAnimation:entity];
             }
+            else if([entity isKindOfClass:[XYInputView class]])
+            {
+                [self prepareInputToDisplay:entity];
+                [self showInputViewWithAnimation:entity];
+            }
         }
     }
 }
@@ -421,16 +627,22 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
     if(_alertViewQueue.count <= 0)
         return;
 
-    if([entity isKindOfClass:[XYAlertView class]] || [entity isKindOfClass:[XYLoadingView class]])
+    if([entity isKindOfClass:[XYAlertView class]] ||
+       [entity isKindOfClass:[XYLoadingView class]] ||
+       [entity isKindOfClass:[XYInputView class]])
     {
         _isDismissing = YES;
         
+        [_textView resignFirstResponder];
+
         if([entity isEqual:[_alertViewQueue lastObject]])
         {
             if([entity isKindOfClass:[XYAlertView class]])
                 [self dismissAlertViewWithAnimation:entity button:buttonIndex];
             else if([entity isKindOfClass:[XYLoadingView class]])
                 [self dismissLoadingViewWithAnimation:entity];
+            else if([entity isKindOfClass:[XYInputView class]])
+                [self dismissInputViewWithAnimation:entity button:buttonIndex];
         }
         else
         {
@@ -469,6 +681,7 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
     _alertView = nil;
     [_blackBG removeFromSuperview];
     [_loadingLabel removeFromSuperview];
+    [_textView resignFirstResponder];
 
     [_alertViewQueue removeAllObjects];
 }
