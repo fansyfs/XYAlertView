@@ -233,7 +233,7 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
         _titleLabel.text = entity.title;
         [_alertView addSubview:_titleLabel];
         
-        UILabel *_messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 35, 240, 20)];
+        UILabel *_messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 40, 240, 20)];
         _messageLabel.textAlignment = UITextAlignmentLeft;
         _messageLabel.backgroundColor = [UIColor clearColor];
         _messageLabel.textColor = [UIColor whiteColor];
