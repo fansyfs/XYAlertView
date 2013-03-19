@@ -220,7 +220,7 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
     _alertView = nil;
     _alertView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"alertView_bg.png"] stretchableImageWithLeftCapWidth:34 topCapHeight:44]];
     _alertView.userInteractionEnabled = YES;
-    _alertView.frame = CGRectMake(0, 0, AlertViewWidth, AlertViewHeight);
+    _alertView.frame = CGRectMake(0, 0, AlertViewWidth, AlertViewHeight + 20);
     _alertView.center = CGPointMake(screenBounds.size.width / 2, screenBounds.size.height / 2);
 
     if(entity.title && entity.message)
@@ -243,16 +243,16 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
         _messageLabel.text = entity.message;
         [_alertView addSubview:_messageLabel];
         
-        _textView = [[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(30, 58, 220, 34)];
+        _textView = [[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(30, 68, 220, 34)];
         _textView.backgroundColor = [UIColor clearColor];
         
         UIImageView *_inputBGView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"alertView_input_bg.png"] stretchableImageWithLeftCapWidth:50 topCapHeight:17]];
-        _inputBGView.frame = CGRectMake(20, 58, 240, 34);
+        _inputBGView.frame = CGRectMake(20, 68, 240, 34);
         [_alertView addSubview:_inputBGView];
     }
     else
     {
-        _textView = [[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(20, 15, 240, 75)];
+        _textView = [[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(20, 15, 240, 95)];
         _textView.backgroundColor = [UIColor whiteColor];
     }
 
@@ -283,7 +283,7 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
         [_button setBackgroundImage:[self buttonImageByStyle:style state:UIControlStateHighlighted]
                            forState:UIControlStateHighlighted];
         
-        _button.frame = CGRectMake(buttonPadding * 2 + buttonWidth * i + buttonPadding * i, 107,
+        _button.frame = CGRectMake(buttonPadding * 2 + buttonWidth * i + buttonPadding * i, 127,
                                    buttonWidth, 44);
         _button.tag = i;
         
