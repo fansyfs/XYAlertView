@@ -223,8 +223,39 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
     _alertView.frame = CGRectMake(0, 0, AlertViewWidth, AlertViewHeight);
     _alertView.center = CGPointMake(screenBounds.size.width / 2, screenBounds.size.height / 2);
 
-    _textView = [[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(20, 15, 240, 75)];
-    _textView.backgroundColor = [UIColor whiteColor];
+    if(entity.title && entity.message)
+    {
+        UILabel *_titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 10, 240, 30)];
+        _titleLabel.textAlignment = UITextAlignmentLeft;
+        _titleLabel.backgroundColor = [UIColor clearColor];
+        _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:20];
+        _titleLabel.text = entity.title;
+        [_alertView addSubview:_titleLabel];
+        
+        UILabel *_messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 35, 240, 20)];
+        _messageLabel.textAlignment = UITextAlignmentLeft;
+        _messageLabel.backgroundColor = [UIColor clearColor];
+        _messageLabel.textColor = [UIColor whiteColor];
+        _messageLabel.font = [UIFont systemFontOfSize:14];
+        _messageLabel.lineBreakMode = UILineBreakModeWordWrap;
+        _messageLabel.numberOfLines = 1;
+        _messageLabel.text = entity.message;
+        [_alertView addSubview:_messageLabel];
+        
+        _textView = [[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(30, 58, 220, 34)];
+        _textView.backgroundColor = [UIColor clearColor];
+        
+        UIImageView *_inputBGView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"alertView_input_bg.png"] stretchableImageWithLeftCapWidth:50 topCapHeight:17]];
+        _inputBGView.frame = CGRectMake(20, 58, 240, 34);
+        [_alertView addSubview:_inputBGView];
+    }
+    else
+    {
+        _textView = [[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(20, 15, 240, 75)];
+        _textView.backgroundColor = [UIColor whiteColor];
+    }
+
     _textView.returnKeyType = UIReturnKeyDone;
     _textView.delegate = self;
     _textView.placeholder = entity.placeholder;

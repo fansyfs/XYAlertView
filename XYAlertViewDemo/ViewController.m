@@ -46,12 +46,15 @@
 
 -(IBAction)inputView:(id)sender
 {
-    XYInputView *inputView = [XYInputView inputViewWithPlaceholder:@"Please input something here..."
-                                                       initialText:nil buttons:[NSArray arrayWithObjects:@"Cancel", @"Done", nil]
-                                                      afterDismiss:^(int buttonIndex, NSString *text) {
-                                                          if(buttonIndex == 1)
-                                                              NSLog(@"text: %@", text);
-                                                      }];
+    XYInputView *inputView = [XYInputView inputViewWithTitle:@"Input alert"
+                                                     message:@"here's the description."
+                                                 placeholder:@"Please input something here..."
+                                                 initialText:nil
+                                                     buttons:[NSArray arrayWithObjects:@"Cancel", @"Done", nil]
+                                                afterDismiss:^(int buttonIndex, NSString *text) {
+                                                    if(buttonIndex == 1)
+                                                        NSLog(@"text: %@", text);
+                                                }];
     [inputView setButtonStyle:XYButtonStyleGreen atIndex:1];
     [inputView show];
 }
