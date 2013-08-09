@@ -575,7 +575,18 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
 	double animationDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     if(animationDuration == 0) animationDuration = 0.25;
 	
-	[self changeLayoutByKeyboardTop:endRect.origin.y andAnimationDuration:animationDuration];
+    float keyboardTop = 0;
+    UIInterfaceOrientation orient = [UIApplication sharedApplication].statusBarOrientation;
+    if (UIDeviceOrientationUnknown == orient)
+        orient = UIDeviceOrientationPortrait;
+    
+    if (UIInterfaceOrientationIsLandscape(orient))
+        keyboardTop = endRect.origin.x;
+    else
+        keyboardTop = endRect.origin.y;
+
+    if(keyboardTop > 0)
+        [self changeLayoutByKeyboardTop:keyboardTop andAnimationDuration:animationDuration];
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
@@ -585,7 +596,18 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
 	double animationDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     if(animationDuration == 0) animationDuration = 0.25;
 	
-	[self changeLayoutByKeyboardTop:endRect.origin.y andAnimationDuration:animationDuration];
+    float keyboardTop = 0;
+    UIInterfaceOrientation orient = [UIApplication sharedApplication].statusBarOrientation;
+    if (UIDeviceOrientationUnknown == orient)
+        orient = UIDeviceOrientationPortrait;
+    
+    if (UIInterfaceOrientationIsLandscape(orient))
+        keyboardTop = endRect.origin.x;
+    else
+        keyboardTop = endRect.origin.y;
+    
+    if(keyboardTop > 0)
+        [self changeLayoutByKeyboardTop:keyboardTop andAnimationDuration:animationDuration];
 }
 
 #pragma mark - public
