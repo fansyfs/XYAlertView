@@ -20,7 +20,7 @@ CGRect XYScreenBounds()
     CGRect bounds = [UIScreen mainScreen].bounds;
     UIInterfaceOrientation orient = [UIApplication sharedApplication].statusBarOrientation;
     if (UIDeviceOrientationUnknown == orient)
-        orient = UIDeviceOrientationPortrait;
+        orient = UIInterfaceOrientationPortrait;
 
     if (UIInterfaceOrientationIsLandscape(orient))
     {
@@ -578,7 +578,7 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
     float keyboardTop = 0;
     UIInterfaceOrientation orient = [UIApplication sharedApplication].statusBarOrientation;
     if (UIDeviceOrientationUnknown == orient)
-        orient = UIDeviceOrientationPortrait;
+        orient = UIInterfaceOrientationPortrait;
     
     if (UIInterfaceOrientationIsLandscape(orient))
         keyboardTop = endRect.origin.x;
@@ -599,7 +599,7 @@ static XYAlertViewManager *sharedAlertViewManager = nil;
     float keyboardTop = 0;
     UIInterfaceOrientation orient = [UIApplication sharedApplication].statusBarOrientation;
     if (UIDeviceOrientationUnknown == orient)
-        orient = UIDeviceOrientationPortrait;
+        orient = UIInterfaceOrientationPortrait;
     
     if (UIInterfaceOrientationIsLandscape(orient))
         keyboardTop = endRect.origin.x;
